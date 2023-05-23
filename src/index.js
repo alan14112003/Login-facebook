@@ -15,18 +15,19 @@ passport.use(
       passReqToCallback: true,
     },
     function (request, accessToken, refreshToken, profile, done) {
-      return done(null, profile);
+      return done(null, { profile });
     }
   )
 );
 app.get("/", (req, res) => {
   res.send("<a href='/redirect/facebook'>Đăng nhập bằng facebook</a>");
 });
-app.route("/redirect/facebook").get(passport.authenticate("facebook"));
+app.route("/redirect/facebook").get(passport.authenticate("facebook", { scope: ['email', 'public_profile']}));
 
 app.get(
   "/callback/facebook",
   passport.authenticate("facebook", {
+
     session: false,
   }),
   function (req, res) {
