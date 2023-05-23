@@ -22,7 +22,7 @@ passport.use(
 app.get("/", (req, res) => {
   res.send("<a href='/redirect/facebook'>Đăng nhập bằng facebook</a>");
 });
-app.route("/redirect/facebook").get(passport.authenticate("facebook", { scope: ['email', 'public_profile']}));
+app.route("/redirect/facebook").get(passport.authenticate("facebook", { scope: ['email', 'profile']}));
 
 app.get(
   "/callback/facebook",
