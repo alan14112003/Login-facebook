@@ -32,7 +32,7 @@ app.get(
   }),
   function (req, res) {
     try {
-      res.json({ user: req.user.profile });
+      res.json({ user: req.user });
     } catch (error) {
       res.json({
         message: "Có lỗi",
