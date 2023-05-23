@@ -14,7 +14,7 @@ passport.use(
       callbackURL: `${process.env.DOMAIN}/callback/facebook`,
       passReqToCallback: true,
     },
-    function (accessToken, refreshToken, profile, done) {
+    function (request, accessToken, refreshToken, profile, done) {
       return done(null, profile);
     }
   )
